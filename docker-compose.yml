@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: scrap-pipeline
+    
+  app:
+    build: .
+    ports:
+      - "8000:8000" #ถ้าต้องการ expose port
+    volumes:
+      - .:/app
+    depends_on:
+      - mysql
+    command: sh -c "sleep 10 && python app.py"

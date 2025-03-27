@@ -1,0 +1,6 @@
+python-dotenv
+beautifulsoup4
+requests
+mysql-connector-python
+sqlalchemy
+pymysql
