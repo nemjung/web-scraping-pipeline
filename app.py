@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 import requests
-from models import Scrapping
 from database import get_db
 from sqlalchemy.orm import Session
 from models import Scrapping, init_db
@@ -22,6 +21,7 @@ def extract(url):
     rawTable = findTable.text
     res = rawTable.split('\n')
     cleanRes = [i for i in res if i]
+    print(cleanRes)
     return cleanRes
 
 def tranform(rawData):
